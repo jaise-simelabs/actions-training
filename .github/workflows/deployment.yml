@@ -1,10 +1,10 @@
-name: ReactApp Deployment
+name: My First Work Flow
 on: workflow_dispatch
 jobs:
   first-job:
     runs-on: ubuntu-latest
-      steps:
-        - name: Print Hello
-    	    run: echo "Hello!!"
-  	    - name: Say Bye
-    	    run: echo "Done. Bye!!"
+    steps:
+    - name: Step1 - Print Hello World
+      run: echo "Hello World!!"
+    - name: Step2 - Print Bye
+      run: echo "Bye!!"
