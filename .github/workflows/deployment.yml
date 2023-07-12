@@ -6,5 +6,10 @@ jobs:
     steps:
       - name: Step1 - Print Hello World
         run: echo "Hello World!!"
-      - name: Step2 - Print Bye
+      - name: Step2 - Print Its done
+        run: echo "It's Done - Yeahh!!"
+  second-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step1 - Print Bye
         run: echo "Bye!!"
