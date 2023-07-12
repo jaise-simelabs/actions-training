@@ -4,7 +4,7 @@ jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
-    - name: Step1 - Print Hello World
-      run: echo "Hello World!!"
-    - name: Step2 - Print Bye
-      run: echo "Bye!!"
+      - name: Step1 - Print Hello World
+        run: echo "Hello World!!"
+      - name: Step2 - Print Bye
+        run: echo "Bye!!"
