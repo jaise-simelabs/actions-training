@@ -14,8 +14,9 @@ jobs:
       - name: Retrieve Secrets from AWS Secret Manager
         run: |
           secret_value=$(aws secretsmanager get-secret-value --secret-id arn:aws:secretsmanager:ap-south-1:060425629624:secret:simelabs-xEwdKb --query SecretString --output text)
-          echo "SECRET_VALUE=$secret_value" >> $GITHUB_ENV
+          echo "SECRET_VALUE=$secret_value" >> file.txt
 
       - name: Use Secret in Script
         run: |
           echo "My secret value: $SECRET_VALUE"
+          cat file.txt
