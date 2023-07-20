@@ -1,15 +1,21 @@
-name: My First Work Flow
+name: Testing AWS Secrets manager on GitHub Actions
 on: workflow_dispatch
 jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Step1 - Print Hello World
-        run: echo "Hello World!!"
-      - name: Step2 - Print Its done
-        run: echo "It's Done - Yeahh!!"
-  second-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Step1 - Print Bye
-        run: echo "Bye!!"
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
+
+      - name: Retrieve Secrets from AWS Secret Manager
+        run: |
+          secret_value=$(aws secretsmanager get-secret-value --secret-id arn:aws:secretsmanager:ap-south-1:060425629624:secret:simelabs-xEwdKb --query SecretString --output text)
+          echo "SECRET_VALUE=$secret_value" >> $GITHUB_ENV
+
+      - name: Use Secret in Script
+        run: |
+          echo "My secret value: $SECRET_VALUE"
