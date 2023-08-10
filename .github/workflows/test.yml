@@ -1,0 +1,8 @@
+name: Test Workflow
+on: workflow_dispatch
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step1 - View Secret Value
+        run: echo "My test secret value is ${{ secrets.test_secret }}
